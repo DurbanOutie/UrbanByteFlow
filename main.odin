@@ -48,12 +48,15 @@ main :: proc(){
             input_buf_len +=1
         }
         text := utf8.runes_to_string(input_buf[0:input_buf_len], context.allocator)
+        defer delete(text)
+        ctext := strings.clone_to_cstring(text)
+        defer delete(ctext)
 
         rl.BeginDrawing()
         rl.ClearBackground(rl.RAYWHITE)
 
         rl.DrawRectangle(5, 5, rl.GetScreenWidth()-10, rl.GetScreenHeight()-10, rl.LIGHTGRAY)
-        rl.DrawText(strings.clone_to_cstring(text), 10, 10, 20, rl.GRAY)
+        rl.DrawText(ctext, 10, 10, 20, rl.GRAY)
 
         rl.EndDrawing()
     }
