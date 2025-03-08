@@ -1,1 +1,1 @@
-odin run .
+./platform_game.bin

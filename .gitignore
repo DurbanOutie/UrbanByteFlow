@@ -1,2 +1,8 @@
 *.swp
 UrbanByteFlow
+game/game_*.so
+game.so
+platform_game.bin
+
+
+
