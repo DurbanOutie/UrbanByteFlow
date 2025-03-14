@@ -54,15 +54,28 @@ beginDrawing :: proc(){
 endDrawing :: proc(){
 }
 
-drawText :: proc(x:int, y:int, size:int, text:cstring){
+
+drawText :: proc(x:f32, y:f32, size:int, text:cstring){
     rl.DrawText(text, i32(x), i32(y), i32(size), rl.GRAY)
 }
 
-fillRect :: proc(x:f32, y:f32, w:f32, h:f32, col:[4]u8){
-    rl.DrawRectanglePro(rl.Rectangle{x, y, w, h}, rl.Vector2{0, 0}, 0, rl.Color(col))
+drawTextC :: proc(x:f32, y:f32, size:int, text:cstring, color:[4]u8){
+    rl.DrawText(text, i32(x), i32(y), i32(size), rl.Color(color))
+}
+
+fillRect :: proc(x:f32, y:f32, w:f32, h:f32, color:[4]u8){
+    rl.DrawRectanglePro(rl.Rectangle{x, y, w, h}, rl.Vector2{0, 0}, 0, rl.Color(color))
 }
 drawLine :: proc(x1:f32, y1:f32, x2:f32, y2:f32, col:[4]u8){
     rl.DrawLine(i32(x1), i32(y1), i32(x2), i32(y2), rl.Color(col))
+}
+
+getCharPressed :: proc()->rune{
+    return rl.GetCharPressed()
+}
+
+isBackspaced :: proc()->bool{
+    return rl.IsKeyPressed(rl.KeyboardKey.BACKSPACE)
 }
 
 getMousePos :: proc() -> [2]f32{

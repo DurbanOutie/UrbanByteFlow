@@ -1,5 +1,5 @@
 echo "Building game"
-odin build game -build-mode:dll -out:game_tmp.so -strict-style -vet 
+odin build game -debug -build-mode:dll -out:game_tmp.so -strict-style -vet 
 
 mv game_tmp.so game.so
 
@@ -11,4 +11,4 @@ fi
 echo "Building Platform"
 
 rm game_*.so
-odin build . -define:RAYLIB_SHARED=true -out:platform_game.bin -strict-style -vet 
+odin build . -debug -define:RAYLIB_SHARED=true -out:platform_game.bin -strict-style -vet 
